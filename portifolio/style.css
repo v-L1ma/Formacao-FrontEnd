@@ -84,7 +84,7 @@ section{
 }
 
 #hero>h1{
-    font-size: 60px;
+    font-size: 3.75rem;
     font-weight: bolder;
     text-align: center;
     margin-top: -10rem;
@@ -119,7 +119,7 @@ section{
 }
 
 #sobre>div>p{
-    font-size: 18px;
+    font-size: 1.25rem;
     line-height: 2rem;
 }
 
@@ -285,7 +285,7 @@ strong{
     }
 
     #hero>h1{
-        font-size: 34px;
+        font-size: 2.125rem;
         font-weight: bolder;
         text-align: center;
         margin-top: -10rem;
