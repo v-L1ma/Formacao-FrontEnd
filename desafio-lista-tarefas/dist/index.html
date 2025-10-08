@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tarefas</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>        
+        <h1>Minhas tarefas</h1>
+        <p>Organize seu dia com eficiencia</p>
+    </header>
+    <main>
+        <div id="mensagemView"></div>
+        
+        <div class="container">
+            <form class="form">
+                <input id="conteudoinput" type="text" placeholder="Adicionar nova tarefa...">
+                <button type="submit" id="submit-btn">+ Adicionar</button>
+            </form>
+            <div id="estatisticas">
+                <p id="pendentes">0 tarefas pendentes</p>
+                <p id="total">0 tarefas no total</p>
+            </div>
+        </div>
+
+        <div id="tarefasView"></div>
+    </main>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
