@@ -1,0 +1,14 @@
+<mat-card class="card" appearance="outlined">
+  <img mat-card-image [src]="produto()?.imagem ? produto()?.imagem : 'product-placeholder.jpg'" alt="Photo do produto">
+  <mat-card-content class="content">
+    <h1>{{produto()?.nome}}</h1>
+    <p class="descricao">{{produto()?.descricao}}</p>
+    <p class="preco">{{produto()?.preco | currency:"BRL"}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button>
+        <mat-icon>shopping_cart</mat-icon>
+        COMPRAR
+    </button>
+  </mat-card-actions>
+</mat-card>

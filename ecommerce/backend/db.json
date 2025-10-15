@@ -1,0 +1,28 @@
+{
+  "produtos": [
+    {
+      "id": "32c2",
+      "nome": "Notebook thinkpad",
+      "preco": 2700,
+      "categoria": "Eletrônicos",
+      "descricao": "Notebook raiz, guenta o vscode",
+      "imagem": null
+    },
+    {
+      "id": "8bc5",
+      "nome": "Maçã",
+      "preco": 2,
+      "categoria": "Alimentação",
+      "descricao": "Fruta",
+      "imagem": null
+    },
+    {
+      "id": "8b9f",
+      "nome": "PercyJackson",
+      "categoria": "Livro",
+      "descricao": "Livro",
+      "imagem": null,
+      "preco": 25
+    }
+  ]
+}

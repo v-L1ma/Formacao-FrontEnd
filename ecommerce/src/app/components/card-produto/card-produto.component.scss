@@ -1,0 +1,46 @@
+.card{
+    width: auto;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-break: break-all;
+
+    img{
+        width: 100%;
+    }
+
+    &:hover{
+        scale: 1.02;
+
+        h1{
+            color: #6467f1;
+        }
+    }
+
+    .content{
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: .5rem;
+
+        h1{
+            font-size: 1.5rem;
+        }
+        .descricao{
+            color: gray;
+        }
+        .preco{
+            font-size: 1.5rem;
+            color: #6467f1;
+            font-weight: bold;
+        }
+    }
+
+    button{
+        width: 100%;
+        border-radius: .5rem;
+    }
+}

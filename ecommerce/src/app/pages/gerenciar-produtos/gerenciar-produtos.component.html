@@ -1,0 +1,20 @@
+<section>
+    <div class="wrapper">
+        <div class="header">
+            <div class="title">            
+                <h1><mat-icon>shopping_bag</mat-icon> Gerenciar Produtos</h1>
+                <p>Visualize, edite e exclua produtos do seu catálogo</p>
+            </div>
+            <button mat-flat-button (click)="openCreateProductDialog()">
+                <mat-icon>add</mat-icon>
+                Adicionar novo
+            </button>
+        </div>
+
+        <app-tabela-produtos 
+        [produtos]="produtos()" 
+        (editarProduto)="editarProduto($event)" 
+        (excluirProduto)="excluirProduto($event)"
+        ></app-tabela-produtos>
+    </div>
+</section>

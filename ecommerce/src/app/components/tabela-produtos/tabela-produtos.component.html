@@ -1,0 +1,77 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Produtos</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- @if (isLoading()) {
+            <tr>
+                <td colspan="6" class="loading">
+                    <div>
+                        <mat-spinner diameter="30"></mat-spinner>
+                        <p>Carregando</p>
+                    </div>
+                </td>
+            </tr>
+        } @else { -->
+            @for (item of produtos(); track $index) {
+            <tr>
+                <td>{{item.id}}</td>
+                <td>
+                    <div class="produto">
+                        <img [src]="item.imagem ? item.imagem : 'product-placeholder.jpg'" alt="">
+                        <div>
+                            <h2>{{item.nome}}</h2>
+                            <p>{{item.descricao}}</p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <p class="categoria">
+                        {{item.categoria}}
+                    </p>
+                </td>
+                <td>
+                    <p>{{item.preco | currency:"BRL"}}</p>
+                </td>
+                <td>
+                    <button matIconButton (click)="openEditProductDialog(item)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button matIconButton (click)="excluirProduto.emit(item.id)">
+                        <mat-icon class="delete">delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+            } @empty {
+                <tr>
+                    <td class="empty" colspan="6" >
+                        <p>Nenhum produto encontrado.</p>
+                    </td>
+                </tr>
+            }
+        <!-- } -->
+        
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                <mat-paginator
+                        [length]="paginaAtual().length"
+                        [pageSize]="paginaAtual().pageSize"
+                        [pageSizeOptions]="[5, 10, 25, 100]"
+                        aria-label="Select page"
+                        (page)="mudarPagina($event)"
+                        >
+                </mat-paginator>
+        </td>
+        </tr>
+    </tfoot>
+</table>
+
+

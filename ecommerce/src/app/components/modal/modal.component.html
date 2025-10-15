@@ -1,0 +1,77 @@
+<div class="wrapper">
+    <header mat-dialog-title>
+        <h2>{{data.tituloModal}}</h2>
+        <p>Preencha os dados do produto para adicionar ao catálogo</p>
+    </header>
+    <mat-dialog-content class="wrapper">
+    <form [formGroup]="produtoForm">        
+        <div>
+            <label for="nome">Nome do produto *</label>
+            <input id="nome" type="text" matInput formControlName="nome" placeholder="Ex: Notebook"/>
+            @if (produtoForm.get('nome')?.errors?.['required'] && produtoForm.get('nome')?.touched) {
+                <mat-error>Insira um nome para o produto</mat-error>
+            }
+            @if (produtoForm.get('nome')?.errors?.['maxlength'] && produtoForm.get('nome')?.touched) {
+                <mat-error>O nome deve ter no máximo 30 caracteres</mat-error>
+            }
+        </div>
+    
+        <div>
+            <label for="preco">Preço (R$) *</label>
+            <input id="preco" type="number" min="0.00" step="0.01" matInput formControlName="preco" placeholder="0.00"/>
+            @if (produtoForm.get('preco')?.errors?.['required'] && produtoForm.get('preco')?.touched) {
+                <mat-error>Insira um preço para o produto</mat-error>
+            }
+             @if (produtoForm.get('preco')?.errors?.['min'] && produtoForm.get('preco')?.touched) {
+                <mat-error>O preco deve ser maior que R$ 0,01</mat-error>
+            }
+        </div>
+    
+        <div>
+            <label for="categoria">Categoria *</label>
+           <select name="categoria" formControlName="categoria" id="categoria">
+                <option value="" disabled>Selecione uma categoria</option>
+                <option value="Eletrônicos">Eletrônicos</option>
+                <option value="Moda">Moda</option>
+                <option value="Casa e Decoração">Casa e Decoração</option>
+                <option value="Esportes">Esportes</option>
+                <option value="Livros">Livros</option>
+                <option value="Beleza e Saúde">Beleza e Saúde</option>
+                <option value="Brinquedos">Brinquedos</option>
+                <option value="Automotivo">Automotivo</option>
+                <option value="Alimentação">Alimentação</option>
+            </select>
+            @if (produtoForm.get('categoria')?.errors?.['required'] && produtoForm.get('categoria')?.touched) {
+                <mat-error>Insira uma categoria para o produto</mat-error>
+            }
+             @if (produtoForm.get('categoria')?.errors?.['maxlength'] && produtoForm.get('categoria')?.touched) {
+                <mat-error>A categoria deve ter no máximo 30 caracteres</mat-error>
+            }
+        </div>
+    
+        <div>
+            <label for="descricao">Descrição *</label>
+            <input id="descricao" type="text" matInput formControlName="descricao" placeholder="Descreva o produto detalhadamente"/>
+            @if (produtoForm.get('descricao')?.errors?.['required'] && produtoForm.get('descricao')?.touched) {
+                <mat-error>Insira uma descrição para o produto</mat-error>
+            }
+            @if (produtoForm.get('descricao')?.errors?.['maxlength'] && produtoForm.get('descricao')?.touched) {
+                <mat-error>A descrição deve ter no máximo 70 caracteres</mat-error>
+            }
+        </div>
+
+        <div>
+            <label for="imagem">URL da Imagem *</label>
+            <input id="imagem" type="text" matInput formControlName="imagem" placeholder="https://exemplo.com/imagem.jpg"/>
+            @if (produtoForm.get('imagem')?.invalid && produtoForm.get('imagem')?.touched) {
+                <mat-error>Insira uma URL para a imagem do produto</mat-error>
+            }
+        </div>
+    </form>
+
+    </mat-dialog-content>
+    <mat-dialog-actions class="wrapper">
+      <button mat-stroked-button (click)="onNoClick()">Cancelar</button>
+      <button mat-flat-button [mat-dialog-close]="produtoForm.value" [disabled]="produtoForm.invalid">Salvar</button>
+    </mat-dialog-actions>
+</div>

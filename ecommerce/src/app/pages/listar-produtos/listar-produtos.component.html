@@ -1,0 +1,20 @@
+<section>
+    <div class="header">
+        <h1>Nossos Produtos</h1>
+        <p>Descubra nossa seleção de produtos de alta qualidade</p>
+    </div>
+    <div class="gallery">
+        @if (isLoading()) {
+            <div>
+                <mat-spinner diameter="30"></mat-spinner>
+                <p>Carregando</p>
+            </div>
+        } @else {
+            @for (item of produtos(); track $index) {
+                <app-card-produto [produto]="item"/>
+            } @empty {
+                <p>Nenhum produto encontrado.</p>
+            }
+        }
+    </div>
+</section>
