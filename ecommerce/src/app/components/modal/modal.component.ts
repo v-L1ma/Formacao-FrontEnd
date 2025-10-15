@@ -12,9 +12,12 @@ import {
 } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule,  } from '@angular/material/input';
+import { IProduto } from '../../models/IProduto';
 
 export interface DialogData {
   tituloModal: string;
+  descricaoModal:string;
+  produto: IProduto | null
 }
 @Component({
   selector: 'app-modal',
@@ -39,6 +42,17 @@ export class ModalComponent implements OnInit{
   private fb= inject(FormBuilder)
 
   ngOnInit(): void {
+    if(this.data.produto){
+      this.produtoForm = this.fb.group({
+        nome: [this.data.produto.nome, [Validators.required, Validators.maxLength(30)]],
+        preco: [this.data.produto.preco, [Validators.required, Validators.min(0.01)]],
+        categoria : [this.data.produto.categoria, [Validators.required, Validators.maxLength(30)]],
+        descricao: [this.data.produto.descricao, [Validators.required, Validators.maxLength(70)]],
+        imagem: [this.data.produto.imagem],
+      });
+      return;
+    }
+    
     this.produtoForm = this.fb.group({
       nome: ['', [Validators.required, Validators.maxLength(30)]],
       preco: [0, [Validators.required, Validators.min(0.01)]],

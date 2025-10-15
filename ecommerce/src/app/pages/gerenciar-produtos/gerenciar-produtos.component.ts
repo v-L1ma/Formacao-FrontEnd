@@ -26,7 +26,6 @@ import { IProduto } from "../../models/IProduto";
   styleUrl: './gerenciar-produtos.component.scss'
 })
 export class GerenciarProdutos implements OnInit{
-  readonly tituloModal = model('Cadastrar produto');
   readonly dialog = inject(MatDialog);
   produtos = signal<IProduto[]>([]);
 
@@ -77,7 +76,10 @@ export class GerenciarProdutos implements OnInit{
 
   openCreateProductDialog(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
-      data: {tituloModal: this.tituloModal()},
+      data: {
+        tituloModal: 'Cadastrar produto', 
+        descricaoModal:'Preencha os dados do produto para adicionar ao catálogo'
+      },
     });
 
     dialogRef.afterClosed().subscribe((result:IProduto) => {

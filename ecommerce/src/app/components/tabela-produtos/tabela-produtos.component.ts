@@ -6,10 +6,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ProdutoService } from '../../services/produto/produto.service';
 import { IProduto } from '../../models/IProduto';
 import { CurrencyPipe } from '@angular/common';
-import { ModalEditarComponent } from '../modal-editar/modal-editar.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from "@angular/material/icon";
 import {MatInputModule} from '@angular/material/input';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-tabela-produtos',
@@ -33,7 +33,6 @@ export class TabelaProdutos implements OnInit{
     pageSize:10
   });
 
-  readonly tituloModal = model('Editar produto');
   readonly dialog = inject(MatDialog);
   produtos = input.required<IProduto[]>();
   excluirProduto = output<string>();
@@ -50,8 +49,12 @@ export class TabelaProdutos implements OnInit{
   }
 
   openEditProductDialog(item: IProduto): void {
-    const dialogRef = this.dialog.open(ModalEditarComponent, {
-      data: {tituloModal: this.tituloModal(), produto: item},
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: {
+        tituloModal: 'Editar produto', 
+        descricaoModal: 'Preencha os dados que desejar para editar o produto', 
+        produto: item
+      },
     });
 
     dialogRef.afterClosed().subscribe((result:IProduto) => {
